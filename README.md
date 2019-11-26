@@ -11,6 +11,6 @@ $ pip install -r requirements.txt
 2. Setup Configuration
     1. Create a praw.ini file (from the template)
     ```
-    $ cp praw.ini.sample praw.ini
+    $ cp praw.ini.template praw.ini
     ```
     2. Fill in the empty strings with appropriate values
