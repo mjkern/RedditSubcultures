@@ -49,9 +49,12 @@ for submission in reddit.subreddit(subreddit_name).new(limit=limit):
         print("\t" + comment.body)
         comments = comments.append({
             "id": comment.id,
+            "submission_id": comment.parent_id, # for nested comments this would be a comment id, but currently not getting nested comments
+            "user": comment.author,
+            "score": comment.score,
             "body": comment.body
         }, ignore_index=True)
 
 # write the output files
-submissions.to_csv("downloads/" + subreddit_name + "-submissions")
-comments.to_csv("downloads/" + subreddit_name + "-comments")
+submissions.to_csv("downloads/" + subreddit_name + "-submissions.csv")
+comments.to_csv("downloads/" + subreddit_name + "-comments.csv")
