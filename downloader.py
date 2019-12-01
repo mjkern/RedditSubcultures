@@ -32,10 +32,8 @@ if subreddit_name:
 else:
     subreddit_name = input("subreddit: ")
 
-# print all the submission titles
-print("------ top " + str(limit) + " submissions ------")
+# get submissions and comments
 for submission in reddit.subreddit(subreddit_name).new(limit=limit):
-    print(submission.title)
     submissions = submissions.append({
         "id": submission.id,
         "user": submission.author,
@@ -46,7 +44,6 @@ for submission in reddit.subreddit(subreddit_name).new(limit=limit):
         "subreddit": submission.subreddit.display_name
     }, ignore_index=True)
     for comment in submission.comments:
-        print("\t" + comment.body)
         comments = comments.append({
             "id": comment.id,
             "submission_id": comment.parent_id, # for nested comments this would be a comment id, but currently not getting nested comments
@@ -54,6 +51,9 @@ for submission in reddit.subreddit(subreddit_name).new(limit=limit):
             "score": comment.score,
             "body": comment.body
         }, ignore_index=True)
+
+# give feedback
+print("got " + str(len(submissions)) + " submissions and " + str(len(comments)) + " comments")
 
 # write the output files
 submissions.to_csv("downloads/" + subreddit_name + "-submissions.csv")
