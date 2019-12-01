@@ -15,7 +15,7 @@ else:
 
 # print all the submission titles
 print("------ top " + str(limit) + " posts ------")
-for submission in reddit.subreddit(subreddit_name).hot(limit=limit):
+for submission in reddit.subreddit(subreddit_name).new(limit=limit):
     print(submission.title)
     for comment in submission.comments:
         print("\t" + comment.body)
