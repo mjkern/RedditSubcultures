@@ -14,8 +14,17 @@ $ pip install -r requirements.txt
     $ cp praw.ini.template praw.ini
     ```
     2. Fill in the appropriate values immediatly after each eqauls (=) sign
-    3. Verify authentication works by running the test.py file. Expected output it 10 large integers,
-    one per line.
-    ```
-    $ python test.py
-    ```
+
+3. Verify setup works by running the test.py file. Expected output it 10 large integers,
+one per line.
+```
+$ python test.py
+```
+
+## Download Subreddit Content
+
+1. [Optional] Customize configuration by setting `limit` and/or `subreddit_name` in `downloader.py`
+2. Run the downloader
+```
+$ python downloader.py
+```
