@@ -13,4 +13,4 @@ $ pip install -r requirements.txt
     ```
     $ cp praw.ini.template praw.ini
     ```
-    2. Fill in the empty strings with appropriate values
+    2. Fill in the appropriate values immediatly after each eqauls (=) sign
