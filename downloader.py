@@ -36,13 +36,18 @@ else:
 print("------ top " + str(limit) + " submissions ------")
 for submission in reddit.subreddit(subreddit_name).new(limit=limit):
     print(submission.title)
-    submissions.append({
+    submissions = submissions.append({
         "id": submission.id,
-        "title": submission.title
+        "user": submission.author,
+        "date": submission.created_utc,
+        "score": submission.score,
+        "title": submission.title,
+        "body": submission.selftext,
+        "subreddit": submission.subreddit.display_name
     }, ignore_index=True)
     for comment in submission.comments:
         print("\t" + comment.body)
-        comments.append({
+        comments = comments.append({
             "id": comment.id,
             "body": comment.body
         }, ignore_index=True)
