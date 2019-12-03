@@ -5,7 +5,7 @@ reddit = praw.Reddit()
 
 import pandas as pd
 submissions = pd.DataFrame(columns=[
-    "id",
+    "submission_id",
     "user",
     "utc",
     "score",
@@ -15,7 +15,7 @@ submissions = pd.DataFrame(columns=[
 ])
 
 comments = pd.DataFrame(columns=[
-    "id",
+    "comment_id",
     "submission_id",
     "user",
     "utc",
@@ -36,7 +36,7 @@ else:
 # get submissions and comments
 for submission in reddit.subreddit(subreddit_name).new(limit=limit):
     submissions = submissions.append({
-        "id": submission.id,
+        "submission_id": submission.id,
         "user": submission.author,
         "utc": submission.created_utc,
         "score": submission.score,
@@ -46,7 +46,7 @@ for submission in reddit.subreddit(subreddit_name).new(limit=limit):
     }, ignore_index=True)
     for comment in submission.comments:
         comments = comments.append({
-            "id": comment.id,
+            "comment_id": comment.id,
             "submission_id": comment.parent_id, # for nested comments this would be a comment id, but currently not getting nested comments
             "user": comment.author,
             "utc": comment.created_utc,
