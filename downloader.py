@@ -7,7 +7,7 @@ import pandas as pd
 submissions = pd.DataFrame(columns=[
     "id",
     "user",
-    "date",
+    "utc",
     "score",
     "title",
     "body",
@@ -18,6 +18,7 @@ comments = pd.DataFrame(columns=[
     "id",
     "submission_id",
     "user",
+    "utc",
     "score",
     "body"
 ])
@@ -37,7 +38,7 @@ for submission in reddit.subreddit(subreddit_name).new(limit=limit):
     submissions = submissions.append({
         "id": submission.id,
         "user": submission.author,
-        "date": submission.created_utc,
+        "utc": submission.created_utc,
         "score": submission.score,
         "title": submission.title,
         "body": submission.selftext,
@@ -48,6 +49,7 @@ for submission in reddit.subreddit(subreddit_name).new(limit=limit):
             "id": comment.id,
             "submission_id": comment.parent_id, # for nested comments this would be a comment id, but currently not getting nested comments
             "user": comment.author,
+            "utc": comment.created_utc,
             "score": comment.score,
             "body": comment.body
         }, ignore_index=True)
