@@ -35,21 +35,8 @@ if subreddit_name:
 else:
     subreddit_name = input("subreddit: ")
     
-# a helper to print periodic updates
-count_downloaded = 0
-last_update_string = ""
-print("downloaded ", end="")
-def update_count():
-    global count_downloaded # don't really know why python requires this...
-    global last_update_string # and this
-    count_downloaded += 1
-    if count_downloaded % count_to_update == 0:
-        print("\b" * len(last_update_string), end="") # backspace old update
-        last_update_string = str(count_downloaded)
-        print(last_update_string, end="")
-        
-
 # get submissions and comments
+number_downloaded = 0
 for submission in reddit.subreddit(subreddit_name).new(limit=limit):
     submissions = submissions.append({
         "submission_id": submission.id,
@@ -69,7 +56,9 @@ for submission in reddit.subreddit(subreddit_name).new(limit=limit):
             "score": comment.score,
             "body": comment.body
         }, ignore_index=True)
-    update_count()
+    # update count
+    number_downloaded += 1
+    print("downloaded " + str(number_downloaded), end="\r") # \r causes the next print to overwrite this one
 
 # give feedback
 print()
