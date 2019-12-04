@@ -1,2 +1,5 @@
 praw
 networkx
+matplotlib
+datetime
+numpy

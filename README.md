@@ -31,3 +31,7 @@ $ python test.py
 ```
 $ python downloader.py
 ```
+
+## Analyze Subreddit Content
+
+Checkout the jupyter notebook `Data Cleaning and Augmentation.ipynb`
