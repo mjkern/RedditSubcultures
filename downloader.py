@@ -47,7 +47,7 @@ for submission in reddit.subreddit(subreddit_name).new(limit=limit):
     for comment in submission.comments:
         comments = comments.append({
             "comment_id": comment.id,
-            "submission_id": comment.parent_id, # for nested comments this would be a comment id, but currently not getting nested comments
+            "submission_id": comment.link_id,
             "user": comment.author,
             "utc": comment.created_utc,
             "score": comment.score,
