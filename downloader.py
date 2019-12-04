@@ -1,5 +1,6 @@
 
 # setup
+from datetime import datetime
 import praw
 reddit = praw.Reddit()
 
@@ -24,8 +25,8 @@ comments = pd.DataFrame(columns=[
 ])
 
 # constants
-limit = 13
-subreddit_name = "ww3theories" # set to None to get name at runtime
+limit = 100000 # I suspect reddit will cap me out at some point
+subreddit_name = None # set to None to get name at runtime
 
 # get subreddit name
 if subreddit_name:
@@ -58,5 +59,6 @@ for submission in reddit.subreddit(subreddit_name).new(limit=limit):
 print("got " + str(len(submissions)) + " submissions and " + str(len(comments)) + " comments")
 
 # write the output files
-submissions.to_csv("downloads/" + subreddit_name + "-submissions.csv")
-comments.to_csv("downloads/" + subreddit_name + "-comments.csv")
+date_string = datetime.now().strftime("%y.%m.%d-%H:%M:%S")
+submissions.to_csv("downloads/" + subreddit_name + "-submissions-" + date_string + ".csv")
+comments.to_csv("downloads/" + subreddit_name + "-comments-" + date_string + ".csv")
