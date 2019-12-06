@@ -3,3 +3,6 @@ networkx
 matplotlib
 datetime
 numpy
+pandas
+datetime
+scipy
