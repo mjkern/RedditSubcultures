@@ -32,6 +32,10 @@ $ python test.py
 $ python downloader.py
 ```
 
-## Analyze Subreddit Content
+## Prepare Data
 
 Checkout the jupyter notebook `Data Cleaning and Augmentation.ipynb`
+
+## Analyze Users
+
+Checkout the Data Analysis notebooks.
